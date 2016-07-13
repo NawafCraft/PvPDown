@@ -26,7 +26,14 @@ class Main extends PluginBase implements Listener {
        public function getGame(){
        	return GameAPI::getGame();
        }
-
+        public function onTouch(PlayerInteractEvent $event) {
+           $player = $event->getPlayer();
+           $block = $event->getBlock();
+           if($block->getId() == 133) {
+               // add player and full game 
+               // nawaf add code ..
+           }
+       }
 }
 class Time extends PluginTask {
     public $plugin;
