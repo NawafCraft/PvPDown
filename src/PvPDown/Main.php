@@ -8,6 +8,7 @@ use pocketmine\utils\TextFormat as C;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\math\Vector3;
+use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
 	
