@@ -15,3 +15,18 @@ class Main extends PluginBase implements Listener {
     }
     // starting now code :$
 }
+class Time extends PluginTask {
+    public $plugin;
+    public function __construct(Main $plugin) {
+		parent::__construct($plugin);
+		$this->plugin = $plugin;	
+	}
+	
+	public function getPlugin() {
+		return $this->plugin;
+	}
+	
+	public function onRun($currentTick) {
+		
+        }
+}
