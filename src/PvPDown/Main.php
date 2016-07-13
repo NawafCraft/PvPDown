@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener {
            $block = $event->getBlock();
            if($block->getId() == 133) {
                if($this->getSingles($name)->getNumber() >= $max && $max < 7){
-               	// msg
+               	$player->sendMessage("Sorry Game Is Full ..");
                	return;
                }
                
