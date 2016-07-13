@@ -10,51 +10,27 @@ use pocketmine\scheduler\PluginTask;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
+use MiniGamesTree\API\game as GameAPI;
+
 class Main extends PluginBase implements Listener {
 	
-	public $players = array();
-    
+
     public function onEnable() {
-         $this->getServer()->getPluginManager()->registerEvents($this , $this);
-         $this->getServer()->getScheduler()->scheduleRepeatingTask(new Time($this), 60);
+        $this->getServer()->getPluginManager()->registerEvents($this , $this);
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new Time($this->getGame()), 60);
         $this->getLogger()->info(C::GREEN."--------------------------------------------------------------");
         $this->getLogger()->info(C::GOLD."Has Been Endable , By : ".C::AQUA."Nawaf_Craft1b");
         $this->getLogger()->info(C::GREEN."--------------------------------------------------------------");
        }
-       public function addPlayer(Player $player) {
-           foreach($this->players as $name => $plr){
-            $plr->sendMessage("The player ".$player->getName()." has joined the match!");
-        }
-        $this->players[strtolower($player->getName())] = $player;
+       
+       public function getGame(){
+       	return GameAPI::getGame();
        }
-       public function removePlayer(Player $player){
-        if(isset($this->players[$player])){
-            unset($this->players[$player]);
-    }
-  }
-   public function isPlaying(Player $player){
-        return isset($this->players[strtolower($player->getName())]);
-    }
-	public function onJoin(PlayerInteractEvent $event) {
-        $block = $event->getBlock();
-        $player = $event->getPlayer();
-        if($block->getId() == 133) {
-              if(isset($this->players[spl_object_hash($event->getPlayer())])){
-                        $event->getPlayer()->sendMessage("Already joined game.");
-                        return;
-                    }
-                }
-                if(isset($this->players[$player][spl_object_hash($event->getPlayer())])){
-                    $event->getPlayer()->sendMessage("Already joined game.");
-                    return;
-            }
-            $this->addPlayer($player);
-        }
-    }
-    // starting now code :$
+
+}
 class Time extends PluginTask {
     public $plugin;
-    public function __construct(Main $plugin) {
+    public function __construct($plugin) {
 		parent::__construct($plugin);
 		$this->plugin = $plugin;	
 	}
