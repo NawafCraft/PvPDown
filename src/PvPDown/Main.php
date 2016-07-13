@@ -30,8 +30,7 @@ class Main extends PluginBase implements Listener {
            $player = $event->getPlayer();
            $block = $event->getBlock();
            if($block->getId() == 133) {
-               // add player and full game 
-               // nawaf add code ..
+           	$this->getGame()->getSingles()->add($player);
            }
        }
 }
