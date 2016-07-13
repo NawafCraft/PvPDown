@@ -28,16 +28,19 @@ class Main extends PluginBase implements Listener {
        }
         public function onTouch(PlayerInteractEvent $event) {
            $player = $event->getPlayer();
-           $max = 5;
            $name = $event->getPlayer()->getName();
            $block = $event->getBlock();
            if($block->getId() == 133) {
-               if($this->getSingles($name)->getNumber() >= $max && $max < 7){
-               	$player->sendMessage("Sorry Game Is Full ..");
+               if($this->maxplayeringame($name,5)){
+               	// msg
                	return;
                }
                
            }
+       }
+       
+       public function maxplayeringame($name,$max) : string{
+       return $this->getSingles($name)->getNumber() >= $max && $max < 7;
        }
 }
 class Time extends PluginTask {
