@@ -6,3 +6,8 @@
  * and open the template in the editor.
  */
 
+use pocketmine\plugin\PluginBase;
+
+Class Main extends PluginBase {
+
+}
