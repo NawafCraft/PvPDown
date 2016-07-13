@@ -28,9 +28,15 @@ class Main extends PluginBase implements Listener {
        }
         public function onTouch(PlayerInteractEvent $event) {
            $player = $event->getPlayer();
+           $max = 5;
+           $name = $event->getPlayer()->getName();
            $block = $event->getBlock();
            if($block->getId() == 133) {
-           	$this->getGame()->getSingles()->add($player);
+               if($this->getSingles($name)->getNumber() >= $max && $max < 7){
+               	// msg
+               	return;
+               }
+               
            }
        }
 }
