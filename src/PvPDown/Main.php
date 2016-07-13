@@ -35,9 +35,23 @@ class Main extends PluginBase implements Listener {
    public function isPlaying(Player $player){
         return isset($this->players[strtolower($player->getName())]);
     }
-	
+	public function onJoin(PlayerInteractEvent $event) {
+        $block = $event->getBlock();
+        $player = $event->getPlayer();
+        if($block->getId() == 133) {
+              if(isset($this->players[spl_object_hash($event->getPlayer())])){
+                        $event->getPlayer()->sendMessage("Already joined game.");
+                        return;
+                    }
+                }
+                if(isset($this->players[$player][spl_object_hash($event->getPlayer())])){
+                    $event->getPlayer()->sendMessage("Already joined game.");
+                    return;
+            }
+            $this->addPlayer($player);
+        }
+    }
     // starting now code :$
-}
 class Time extends PluginTask {
     public $plugin;
     public function __construct(Main $plugin) {
