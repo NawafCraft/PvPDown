@@ -8,7 +8,9 @@ use pocketmine\utils\TextFormat as C;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\math\Vector3;
-use pocketmine\Player;
+
+use MiniGamesTree\API\game as GamesAPI;
+
 
 class Main extends PluginBase implements Listener {
 	
@@ -21,35 +23,7 @@ class Main extends PluginBase implements Listener {
         $this->getLogger()->info(C::GOLD."Has Been Endable , By : ".C::AQUA."Nawaf_Craft1b");
         $this->getLogger()->info(C::GREEN."--------------------------------------------------------------");
        }
-       public function addPlayer(Player $player) {
-           foreach($this->players as $name => $plr){
-            $plr->sendMessage("The player ".$player->getName()." has joined the match!");
-        }
-        $this->players[strtolower($player->getName())] = $player;
-       }
-       public function removePlayer(Player $player){
-        if(isset($this->players[$player])){
-            unset($this->players[$player]);
+    public function getGame(){
+    return GamesAPI::getGame();
     }
-  }
-   public function isPlaying(Player $player){
-        return isset($this->players[strtolower($player->getName())]);
-    }
-	
-    // starting now code :$
-}
-class Time extends PluginTask {
-    public $plugin;
-    public function __construct(Main $plugin) {
-		parent::__construct($plugin);
-		$this->plugin = $plugin;	
-	}
-	
-	public function getPlugin() {
-		return $this->plugin;
-	}
-	
-	public function onRun($currentTick) {
-		
-        }
 }
