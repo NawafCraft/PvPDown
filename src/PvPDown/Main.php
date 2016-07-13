@@ -39,7 +39,7 @@ class Main extends PluginBase implements Listener {
            }
        }
        
-       public function maxplayeringame($name,$max) : string{
+       public function maxplayeringame($name,$max = 5) : string{
        return $this->getSingles($name)->getNumber() >= $max && $max < 7;
        }
 }
