@@ -1,13 +1,17 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace PvPDown;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\utils\TextFormat as C;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\scheduler\PluginTask;
+use pocketmine\math\Vector3;
 
-Class Main extends PluginBase {
-
+class Main extends PluginBase implements Listener {
+    public function onEnable() {
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    }
+    // starting now code :$
 }
